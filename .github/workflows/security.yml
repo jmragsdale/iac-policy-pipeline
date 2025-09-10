@@ -1,0 +1,19 @@
+name: IaC Security & Cost
+on: [pull_request, push]
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+      - name: tfsec
+        uses: aquasecurity/tfsec-action@v1.0.3
+      - name: Checkov
+        uses: bridgecrewio/checkov-action@v12
+      - name: Conftest OPA
+        uses: instrumenta/conftest-action@v0.3
+        with: { files: "." }
+      - name: Infracost setup
+        uses: infracost/actions/setup@v3
+      - name: Infracost diff
+        run: infracost breakdown --path . --format json --out-file infracost.json || true
