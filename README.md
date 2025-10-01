@@ -81,7 +81,7 @@ deny[msg] {
 - Non-compliant IAM policies
 - Unapproved AWS regions
 
-## 💼 Resume Talking Points
+## 💼 Talking Points
 
 - Automated policy enforcement preventing 95% of misconfigurations
 - Reduced security incidents by implementing policy-as-code
