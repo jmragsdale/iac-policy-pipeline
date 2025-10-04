@@ -1,7 +1,39 @@
-<svg viewBox="0 0 1200 900" width="1200" height="900" xmlns="http://www.w3.org/2000/svg">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 1200 900"
+   width="1200"
+   height="900"
+   version="1.1"
+   id="svg56"
+   sodipodi:docname="iac-policy-pipeline.svg"
+   inkscape:version="1.4.2 (ebf0e940, 2025-05-08)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview56"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.85589529"
+     inkscape:cx="462.08924"
+     inkscape:cy="469.09944"
+     inkscape:window-width="1728"
+     inkscape:window-height="1084"
+     inkscape:window-x="0"
+     inkscape:window-y="33"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg56" />
   <!-- Define styles -->
-  <defs>
-    <style>
+  <defs
+     id="defs1">
+    <style
+       id="style1">
       .box { fill: #fff; stroke: #000; stroke-width: 2; }
       .text { font-family: Arial, sans-serif; font-size: 12px; fill: #000; }
       .title-text { font-family: Arial, sans-serif; font-size: 14px; font-weight: bold; fill: #000; }
@@ -10,127 +42,520 @@
       .arrow { fill: #000; }
       .step-text { font-family: Arial, sans-serif; font-size: 12px; fill: #000; font-style: italic; }
     </style>
-    
     <!-- Arrow marker -->
-    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
-      <polygon points="0 0, 10 3, 0 6" class="arrow" />
+    <marker
+       id="arrowhead"
+       markerWidth="10"
+       markerHeight="10"
+       refX="9"
+       refY="3"
+       orient="auto">
+      <polygon
+         points="0 0, 10 3, 0 6"
+         class="arrow"
+         id="polygon1" />
     </marker>
   </defs>
-  
   <!-- Title -->
-  <text x="600" y="40" text-anchor="middle" class="header">Infrastructure Policy Enforcement Pipeline</text>
-  <text x="600" y="65" text-anchor="middle" style="font-size: 14px; fill: #666;">Policy-as-Code with Open Policy Agent (OPA)</text>
-  
+  <text
+     x="600"
+     y="40"
+     text-anchor="middle"
+     class="header"
+     id="text1">Infrastructure Policy Enforcement Pipeline</text>
+  <text
+     x="600"
+     y="65"
+     text-anchor="middle"
+     style="font-size: 14px; fill: #666;"
+     id="text2">Policy-as-Code with Open Policy Agent (OPA)</text>
   <!-- Step 1: Developer -->
-  <rect x="100" y="120" width="200" height="120" class="box" rx="5"/>
-  <text x="200" y="155" text-anchor="middle" class="title-text">Developer</text>
-  <text x="200" y="175" text-anchor="middle" style="font-size: 12px;">Writes Infrastructure Code</text>
-  
-  <text x="200" y="205" text-anchor="middle" style="font-size: 11px;">• Terraform configurations</text>
-  <text x="200" y="225" text-anchor="middle" style="font-size: 11px;">• CloudFormation templates</text>
-  
+  <rect
+     x="100"
+     y="120"
+     width="200"
+     height="120"
+     class="box"
+     rx="5"
+     id="rect2" />
+  <text
+     x="200"
+     y="155"
+     text-anchor="middle"
+     class="title-text"
+     id="text3">Developer</text>
+  <text
+     x="200"
+     y="175"
+     text-anchor="middle"
+     style="font-size: 12px;"
+     id="text4">Writes Infrastructure Code</text>
+  <text
+     x="200"
+     y="205"
+     text-anchor="middle"
+     style="font-size: 11px;"
+     id="text5">• Terraform configurations</text>
+  <text
+     x="200"
+     y="225"
+     text-anchor="middle"
+     style="font-size: 11px;"
+     id="text6">• CloudFormation templates</text>
   <!-- Step 2: Git Push -->
-  <rect x="360" y="120" width="200" height="120" class="box" rx="5"/>
-  <text x="460" y="155" text-anchor="middle" class="title-text">Git Repository</text>
-  <text x="460" y="175" text-anchor="middle" style="font-size: 12px;">Code Commit</text>
-  
-  <text x="460" y="205" text-anchor="middle" style="font-size: 11px;">• Push to main/feature branch</text>
-  <text x="460" y="225" text-anchor="middle" style="font-size: 11px;">• Trigger webhook</text>
-  
+  <rect
+     x="360"
+     y="120"
+     width="200"
+     height="120"
+     class="box"
+     rx="5"
+     id="rect6" />
+  <text
+     x="460"
+     y="155"
+     text-anchor="middle"
+     class="title-text"
+     id="text7">Git Repository</text>
+  <text
+     x="460"
+     y="175"
+     text-anchor="middle"
+     style="font-size: 12px;"
+     id="text8">Code Commit</text>
+  <text
+     x="460"
+     y="205"
+     text-anchor="middle"
+     style="font-size: 11px;"
+     id="text9">• Push to main/feature branch</text>
+  <text
+     x="460"
+     y="225"
+     text-anchor="middle"
+     style="font-size: 11px;"
+     id="text10">• Trigger webhook</text>
   <!-- Step 3: CI/CD Pipeline -->
-  <rect x="620" y="120" width="200" height="120" class="box" rx="5"/>
-  <text x="720" y="155" text-anchor="middle" class="title-text">CI/CD Pipeline</text>
-  <text x="720" y="175" text-anchor="middle" style="font-size: 12px;">GitHub Actions / Jenkins</text>
-  
-  <text x="720" y="205" text-anchor="middle" style="font-size: 11px;">• Terraform init</text>
-  <text x="720" y="225" text-anchor="middle" style="font-size: 11px;">• Generate plan JSON</text>
-  
+  <rect
+     x="620"
+     y="120"
+     width="200"
+     height="120"
+     class="box"
+     rx="5"
+     id="rect10" />
+  <text
+     x="720"
+     y="155"
+     text-anchor="middle"
+     class="title-text"
+     id="text11">CI/CD Pipeline</text>
+  <text
+     x="720"
+     y="175"
+     text-anchor="middle"
+     style="font-size: 12px;"
+     id="text12">GitHub Actions / Jenkins</text>
+  <text
+     x="720"
+     y="205"
+     text-anchor="middle"
+     style="font-size: 11px;"
+     id="text13">• Terraform init</text>
+  <text
+     x="720"
+     y="225"
+     text-anchor="middle"
+     style="font-size: 11px;"
+     id="text14">• Generate plan JSON</text>
   <!-- Flow arrows for top row -->
-  <line x1="300" y1="180" x2="360" y2="180" class="line" marker-end="url(#arrowhead)"/>
-  <text x="330" y="170" class="step-text">git push</text>
-  
-  <line x1="560" y1="180" x2="620" y2="180" class="line" marker-end="url(#arrowhead)"/>
-  <text x="590" y="170" class="step-text">trigger</text>
-  
+  <line
+     x1="300"
+     y1="180"
+     x2="360"
+     y2="180"
+     class="line"
+     marker-end="url(#arrowhead)"
+     id="line14" />
+  <text
+     x="310"
+     y="170"
+     class="step-text"
+     id="text15">git push</text>
+  <line
+     x1="560"
+     y1="180"
+     x2="620"
+     y2="180"
+     class="line"
+     marker-end="url(#arrowhead)"
+     id="line15" />
+  <text
+     x="578"
+     y="170"
+     class="step-text"
+     id="text16">trigger</text>
   <!-- Step 4: OPA Policy Evaluation -->
-  <rect x="300" y="320" width="600" height="180" class="box" rx="5"/>
-  <text x="600" y="355" text-anchor="middle" class="title-text">Open Policy Agent (OPA) Evaluation</text>
-  <text x="600" y="375" text-anchor="middle" style="font-size: 12px;">Automated Policy Validation</text>
-  
+  <rect
+     x="300"
+     y="318.63345"
+     width="600"
+     height="180"
+     class="box"
+     rx="5"
+     id="rect16" />
+  <text
+     x="600"
+     y="355"
+     text-anchor="middle"
+     class="title-text"
+     id="text17">Open Policy Agent (OPA) Evaluation</text>
+  <text
+     x="600"
+     y="375"
+     text-anchor="middle"
+     style="font-size: 12px;"
+     id="text18">Automated Policy Validation</text>
   <!-- Policy checks inside OPA box -->
-  <rect x="330" y="400" width="540" height="80" class="box" rx="3"/>
-  <text x="600" y="425" text-anchor="middle" style="font-size: 12px; font-weight: bold;">Policy Checks:</text>
-  
-  <text x="350" y="450" class="text" style="font-size: 11px;">• No public S3 buckets</text>
-  <text x="350" y="470" class="text" style="font-size: 11px;">• Encryption required</text>
-  
-  <text x="550" y="450" class="text" style="font-size: 11px;">• No hardcoded credentials</text>
-  <text x="550" y="470" class="text" style="font-size: 11px;">• Security groups locked down</text>
-  
-  <text x="750" y="450" class="text" style="font-size: 11px;">• Required resource tags</text>
-  <text x="750" y="470" class="text" style="font-size: 11px;">• Approved regions only</text>
-  
+  <rect
+     x="330"
+     y="400"
+     width="540"
+     height="80"
+     class="box"
+     rx="3"
+     id="rect18" />
+  <text
+     x="600"
+     y="425"
+     text-anchor="middle"
+     style="font-size: 12px; font-weight: bold;"
+     id="text19">Policy Checks:</text>
+  <text
+     x="350"
+     y="450"
+     class="text"
+     style="font-size: 11px;"
+     id="text20">• No public S3 buckets</text>
+  <text
+     x="350"
+     y="470"
+     class="text"
+     style="font-size: 11px;"
+     id="text21">• Encryption required</text>
+  <text
+     x="550"
+     y="450"
+     class="text"
+     style="font-size: 11px;"
+     id="text22">• No hardcoded credentials</text>
+  <text
+     x="550"
+     y="470"
+     class="text"
+     style="font-size: 11px;"
+     id="text23">• Security groups locked down</text>
+  <text
+     x="742"
+     y="450"
+     class="text"
+     style="font-size:11px"
+     id="text24">• Required resource tags</text>
+  <text
+     x="742"
+     y="470"
+     class="text"
+     style="font-size:11px"
+     id="text25">• Approved regions only</text>
   <!-- Arrow from CI/CD to OPA -->
-  <line x1="720" y1="240" x2="600" y2="320" class="line" marker-end="url(#arrowhead)"/>
-  <text x="670" y="275" class="step-text">tfplan.json</text>
-  
+  <line
+     x1="720"
+     y1="240"
+     x2="600"
+     y2="320"
+     class="line"
+     marker-end="url(#arrowhead)"
+     id="line25" />
+  <text
+     x="688"
+     y="275"
+     class="step-text"
+     id="text26">tfplan.json</text>
   <!-- Decision Point -->
-  <rect x="500" y="540" width="200" height="80" class="box" rx="5"/>
-  <text x="600" y="570" text-anchor="middle" class="title-text">Policy Decision</text>
-  <text x="600" y="590" text-anchor="middle" style="font-size: 12px;">Evaluate compliance</text>
-  <text x="600" y="610" text-anchor="middle" style="font-size: 11px;">Pass or Fail</text>
-  
+  <rect
+     x="500"
+     y="540"
+     width="200"
+     height="80"
+     class="box"
+     rx="5"
+     id="rect26" />
+  <text
+     x="600"
+     y="570"
+     text-anchor="middle"
+     class="title-text"
+     id="text27">Policy Decision</text>
+  <text
+     x="600"
+     y="590"
+     text-anchor="middle"
+     style="font-size: 12px;"
+     id="text28">Evaluate compliance</text>
+  <text
+     x="600"
+     y="610"
+     text-anchor="middle"
+     style="font-size: 11px;"
+     id="text29">Pass or Fail</text>
   <!-- Arrow from OPA to Decision -->
-  <line x1="600" y1="500" x2="600" y2="540" class="line" marker-end="url(#arrowhead)"/>
-  
+  <line
+     x1="600"
+     y1="500"
+     x2="600"
+     y2="540"
+     class="line"
+     marker-end="url(#arrowhead)"
+     id="line29" />
   <!-- Pass Path -->
-  <rect x="150" y="680" width="300" height="140" class="box" rx="5"/>
-  <text x="300" y="715" text-anchor="middle" class="title-text">✅ Policy Pass</text>
-  <text x="300" y="735" text-anchor="middle" style="font-size: 12px;">Deployment Approved</text>
-  
-  <text x="300" y="765" text-anchor="middle" style="font-size: 11px;">• All policies satisfied</text>
-  <text x="300" y="785" text-anchor="middle" style="font-size: 11px;">• Proceed with deployment</text>
-  <text x="300" y="805" text-anchor="middle" style="font-size: 11px;">• Generate compliance report</text>
-  
+  <rect
+     x="150"
+     y="680"
+     width="300"
+     height="140"
+     class="box"
+     rx="5"
+     id="rect29" />
+  <text
+     x="300"
+     y="715"
+     text-anchor="middle"
+     class="title-text"
+     id="text30">✅ Policy Pass</text>
+  <text
+     x="300"
+     y="735"
+     text-anchor="middle"
+     style="font-size: 12px;"
+     id="text31">Deployment Approved</text>
+  <text
+     x="300"
+     y="765"
+     text-anchor="middle"
+     style="font-size: 11px;"
+     id="text32">• All policies satisfied</text>
+  <text
+     x="300"
+     y="785"
+     text-anchor="middle"
+     style="font-size: 11px;"
+     id="text33">• Proceed with deployment</text>
+  <text
+     x="300"
+     y="805"
+     text-anchor="middle"
+     style="font-size: 11px;"
+     id="text34">• Generate compliance report</text>
   <!-- Fail Path -->
-  <rect x="750" y="680" width="300" height="140" class="box" rx="5"/>
-  <text x="900" y="715" text-anchor="middle" class="title-text">❌ Policy Fail</text>
-  <text x="900" y="735" text-anchor="middle" style="font-size: 12px;">Deployment Blocked</text>
-  
-  <text x="900" y="765" text-anchor="middle" style="font-size: 11px;">• Policy violations detected</text>
-  <text x="900" y="785" text-anchor="middle" style="font-size: 11px;">• Block deployment</text>
-  <text x="900" y="805" text-anchor="middle" style="font-size: 11px;">• Report violations to developer</text>
-  
+  <rect
+     x="750"
+     y="680"
+     width="300"
+     height="140"
+     class="box"
+     rx="5"
+     id="rect34" />
+  <text
+     x="900"
+     y="715"
+     text-anchor="middle"
+     class="title-text"
+     id="text35">❌ Policy Fail</text>
+  <text
+     x="900"
+     y="735"
+     text-anchor="middle"
+     style="font-size: 12px;"
+     id="text36">Deployment Blocked</text>
+  <text
+     x="900"
+     y="765"
+     text-anchor="middle"
+     style="font-size: 11px;"
+     id="text37">• Policy violations detected</text>
+  <text
+     x="900"
+     y="785"
+     text-anchor="middle"
+     style="font-size: 11px;"
+     id="text38">• Block deployment</text>
+  <text
+     x="900"
+     y="805"
+     text-anchor="middle"
+     style="font-size: 11px;"
+     id="text39">• Report violations to developer</text>
   <!-- Decision arrows -->
-  <line x1="550" y1="620" x2="350" y2="680" class="line" marker-end="url(#arrowhead)"/>
-  <text x="420" y="645" class="step-text" style="fill: green; font-weight: bold;">Compliant</text>
-  
-  <line x1="650" y1="620" x2="850" y2="680" class="line" marker-end="url(#arrowhead)"/>
-  <text x="780" y="645" class="step-text" style="fill: red; font-weight: bold;">Non-compliant</text>
-  
+  <line
+     x1="550"
+     y1="620"
+     x2="350"
+     y2="680"
+     class="line"
+     marker-end="url(#arrowhead)"
+     id="line39" />
+  <text
+     x="274"
+     y="637"
+     class="step-text"
+     style="font-weight:bold;fill:#008000"
+     id="text40">Compliant</text>
+  <line
+     x1="650"
+     y1="620"
+     x2="850"
+     y2="680"
+     class="line"
+     marker-end="url(#arrowhead)"
+     id="line40" />
+  <text
+     x="834"
+     y="637"
+     class="step-text"
+     style="font-weight:bold;fill:#ff0000"
+     id="text41">Non-compliant</text>
   <!-- Policy Repository -->
-  <rect x="900" y="320" width="250" height="180" class="box" rx="5"/>
-  <text x="1025" y="355" text-anchor="middle" class="title-text">Policy Repository</text>
-  <text x="1025" y="375" text-anchor="middle" style="font-size: 12px;">Rego Policies</text>
-  
-  <text x="920" y="405" class="text" style="font-size: 11px; font-weight: bold;">Example Policy:</text>
-  <text x="920" y="425" class="text" style="font-size: 9px;">deny[msg] {</text>
-  <text x="920" y="440" class="text" style="font-size: 9px;">  resource.type == "aws_s3_bucket"</text>
-  <text x="920" y="455" class="text" style="font-size: 9px;">  resource.acl == "public-read"</text>
-  <text x="920" y="470" class="text" style="font-size: 9px;">  msg := "Public S3 not allowed"</text>
-  <text x="920" y="485" class="text" style="font-size: 9px;">}</text>
-  
+  <rect
+     x="909.34692"
+     y="318.83163"
+     width="250"
+     height="180"
+     class="box"
+     rx="5"
+     id="rect41" />
+  <text
+     x="1025"
+     y="355"
+     text-anchor="middle"
+     class="title-text"
+     id="text42">Policy Repository</text>
+  <text
+     x="1025"
+     y="375"
+     text-anchor="middle"
+     style="font-size: 12px;"
+     id="text43">Rego Policies</text>
+  <text
+     x="982"
+     y="405"
+     class="text"
+     style="font-weight:bold;font-size:11px"
+     id="text44">Example Policy:</text>
+  <text
+     x="982"
+     y="425"
+     class="text"
+     style="font-size:9px"
+     id="text45">deny[msg] {</text>
+  <text
+     x="982"
+     y="440"
+     class="text"
+     style="font-size:9px"
+     id="text46">resource.type == &quot;aws_s3_bucket&quot;</text>
+  <text
+     x="982"
+     y="455"
+     class="text"
+     style="font-size:9px"
+     id="text47">resource.acl == &quot;public-read&quot;</text>
+  <text
+     x="982"
+     y="470"
+     class="text"
+     style="font-size:9px"
+     id="text48">msg := &quot;Public S3 not allowed&quot;</text>
+  <text
+     x="982"
+     y="485"
+     class="text"
+     style="font-size:9px"
+     id="text49">}</text>
   <!-- Arrow from Policy Repo to OPA -->
-  <line x1="900" y1="410" x2="900" y2="410" class="line" marker-end="url(#arrowhead)"/>
-  <line x1="900" y1="410" x2="780" y2="410" class="line" stroke-dasharray="5,5"/>
-  <text x="830" y="400" class="step-text">Load policies</text>
-  
+  <line
+     x1="916"
+     y1="394"
+     x2="916"
+     y2="394"
+     class="line"
+     marker-end="url(#arrowhead)"
+     id="line49" />
+  <line
+     x1="910"
+     y1="394"
+     x2="790"
+     y2="394"
+     class="line"
+     stroke-dasharray="5, 5"
+     id="line50" />
+  <text
+     x="816"
+     y="390"
+     class="step-text"
+     id="text50">Load policies</text>
   <!-- Benefits Box -->
-  <rect x="100" y="120" width="250" height="120" class="box" rx="5" stroke-dasharray="5,5" fill="none"/>
-  <text x="100" y="110" class="text" style="font-size: 12px; font-weight: bold;">Key Benefits:</text>
-  <text x="50" y="140" class="text" style="font-size: 11px;">✓ Prevent misconfigurations</text>
-  <text x="50" y="160" class="text" style="font-size: 11px;">✓ Enforce security standards</text>
-  <text x="50" y="180" class="text" style="font-size: 11px;">✓ Ensure compliance</text>
-  <text x="50" y="200" class="text" style="font-size: 11px;">✓ Shift-left security</text>
-  <text x="50" y="220" class="text" style="font-size: 11px;">✓ Automated validation</text>
+  <g
+     id="g57"
+     transform="translate(0,-10.515305)">
+    <rect
+       x="22.914909"
+       y="389.14877"
+       width="250"
+       height="120"
+       class="box"
+       rx="5"
+       stroke-dasharray="5, 5"
+       fill="none"
+       id="rect50" />
+    <g
+       id="g56"
+       transform="translate(19.724486,341.16323)">
+      <text
+         x="89.981667"
+         y="21.944132"
+         class="text"
+         style="font-weight:bold;font-size:12px"
+         id="text51">Key Benefits:</text>
+    </g>
+    <text
+       x="72.807747"
+       y="414.19397"
+       class="text"
+       style="font-size:11px"
+       id="text52">✓ Prevent misconfigurations</text>
+    <text
+       x="70.973518"
+       y="432.22385"
+       class="text"
+       style="font-size:11px"
+       id="text53">✓ Enforce security standards</text>
+    <text
+       x="89.329231"
+       y="450.25104"
+       class="text"
+       style="font-size:11px"
+       id="text54">✓ Ensure compliance</text>
+    <text
+       x="95.272346"
+       y="468.28357"
+       class="text"
+       style="font-size:11px"
+       id="text55">✓ Shift-left security</text>
+    <text
+       x="85.190804"
+       y="487.33932"
+       class="text"
+       style="font-size:11px"
+       id="text56">✓ Automated validation</text>
+  </g>
 </svg>
