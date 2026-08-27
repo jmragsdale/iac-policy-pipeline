@@ -18,11 +18,20 @@ jobs:
 
       - uses: hashicorp/setup-terraform@v3
 
+      # examples/ holds policy fixtures, and half of them are deliberately
+      # insecure, so tfsec and Checkov report on them without failing the build.
+      # The OPA gate below is what decides pass/fail.
       - name: tfsec
         uses: aquasecurity/tfsec-action@v1.0.3
+        with:
+          working_directory: examples
+          soft_fail: true
 
       - name: Checkov
         uses: bridgecrewio/checkov-action@v12
+        with:
+          directory: examples
+          soft_fail: true
 
       # instrumenta/conftest-action is unmaintained (last release 2021) and has
       # no v0.3 tag, which failed the job before any step ran. Pin the binary.
@@ -33,15 +42,27 @@ jobs:
             | sudo tar -xz -C /usr/local/bin conftest
           conftest --version
 
-      - name: Conftest OPA
+      - name: Policy unit tests
+        run: conftest verify --policy policies/opa
+
+      # A policy gate that only ever sees compliant input proves nothing, so
+      # assert both directions: the bad fixtures must be rejected and the good
+      # ones must pass.
+      - name: Non-compliant fixtures must be rejected
         run: |
-          shopt -s nullglob globstar
-          targets=(examples/**/*.tf examples/**/*.json)
-          if [ ${#targets[@]} -eq 0 ]; then
-            echo "::warning::No files under examples/ — OPA policies were not exercised."
-            exit 0
-          fi
-          conftest test --policy policies/opa "${targets[@]}"
+          status=0
+          for fixture in examples/aws/public-s3 examples/azure/public-blob; do
+            if conftest test --policy policies/opa "$fixture"; then
+              echo "::error file=$fixture/main.tf::$fixture was accepted but must be rejected"
+              status=1
+            else
+              echo "$fixture correctly rejected"
+            fi
+          done
+          exit $status
+
+      - name: Compliant fixtures must pass
+        run: conftest test --policy policies/opa examples/aws/secure-s3 examples/azure/secure-blob
 
       - name: Infracost setup
         if: env.INFRACOST_API_KEY != ''
@@ -51,4 +72,4 @@ jobs:
 
       - name: Infracost diff
         if: env.INFRACOST_API_KEY != ''
-        run: infracost breakdown --path . --format json --out-file infracost.json || true
+        run: infracost breakdown --path examples --format json --out-file infracost.json || true

@@ -40,46 +40,74 @@ This project demonstrates automated policy enforcement using Open Policy Agent (
 ## 🚀 Quick Start
 
 ```bash
-# Install OPA
-brew install opa
+# Install conftest (bundles OPA)
+brew install conftest
 
 # Clone repository
 git clone https://github.com/jmragsdale/iac-policy-pipeline.git
 cd iac-policy-pipeline
 
-# Run policy validation
-terraform init
-terraform plan -out=tfplan.binary
-terraform show -json tfplan.binary > tfplan.json
-opa eval --data policies --input tfplan.json "data.terraform.deny"
+# Run the policy unit tests
+conftest verify --policy policies/opa
+
+# Evaluate Terraform against the policies — this one is rejected...
+conftest test --policy policies/opa examples/aws/public-s3
+
+# ...and this one passes
+conftest test --policy policies/opa examples/aws/secure-s3
 ```
+
+The policies read Terraform HCL directly through conftest's parser, so no
+`terraform plan` is required and nothing has to be applied to a cloud account.
+
+## 🧪 Fixtures
+
+`examples/` holds paired fixtures — one deliberately non-compliant, one
+compliant — for each rule set. CI asserts **both** directions on every push: the
+bad fixtures must be rejected and the good ones must pass, so the gate cannot
+quietly go green by evaluating nothing.
+
+| Fixture | Expected |
+|---|---|
+| `examples/aws/public-s3` | rejected — public ACL, all four public-access guards off |
+| `examples/aws/secure-s3` | passes |
+| `examples/azure/public-blob` | rejected — `container_access_type = "container"`, public nested items |
+| `examples/azure/secure-blob` | passes |
 
 ## 📋 Example Policy: No Public S3 Buckets
 
 ```rego
-package terraform.aws.s3
+package main
 
-deny[msg] {
-    resource := input.planned_values.root_module.resources[_]
-    resource.type == "aws_s3_bucket"
-    resource.values.acl == "public-read"
-    
-    msg := sprintf(
-        "S3 bucket '%s' is publicly accessible. Public S3 buckets are not allowed.",
-        [resource.name]
-    )
+import rego.v1
+
+acls_granting_public_access := {"public-read", "public-read-write"}
+
+deny contains msg if {
+	some name, i
+	acl := input.resource.aws_s3_bucket_acl[name][i]
+	acl.acl in acls_granting_public_access
+	msg := sprintf("aws_s3_bucket_acl.%s sets acl = %q; S3 objects must not be world-readable", [name, acl.acl])
 }
 ```
 
-## 🔐 Detected Violations
+## 🔐 Enforced Today
 
-- Public S3 buckets
-- Unencrypted storage
-- Hard-coded credentials
-- Open security groups (0.0.0.0/0)
-- Missing resource tags
-- Non-compliant IAM policies
-- Unapproved AWS regions
+- Public S3 ACLs (`public-read`, `public-read-write`)
+- S3 public-access blocks with any of the four guards off or unset
+- S3 buckets declared with no public-access block at all
+- Azure containers with `container_access_type` of `blob` or `container`
+- Azure storage accounts that allow public nested items (including by omission —
+  the provider default is `true`)
+
+Also runs on every push, reporting but not gating: **tfsec** and **Checkov**
+against the fixtures, and **Infracost** when `INFRACOST_API_KEY` is configured.
+
+### Not yet implemented
+
+Encryption-at-rest, hard-coded credentials, open security groups (`0.0.0.0/0`),
+required tags, IAM policy shape and region allow-lists are on the roadmap; there
+are no rules for them in `policies/opa` yet.
 
 ## 💼 Talking Points
 
