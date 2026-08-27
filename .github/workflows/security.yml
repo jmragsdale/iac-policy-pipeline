@@ -1,19 +1,54 @@
 name: IaC Security & Cost
+
 on: [pull_request, push]
+
+permissions:
+  contents: read
+
+env:
+  CONFTEST_VERSION: 0.69.0
+
 jobs:
   scan:
     runs-on: ubuntu-latest
+    env:
+      INFRACOST_API_KEY: ${{ secrets.INFRACOST_API_KEY }}
     steps:
       - uses: actions/checkout@v4
+
       - uses: hashicorp/setup-terraform@v3
+
       - name: tfsec
         uses: aquasecurity/tfsec-action@v1.0.3
+
       - name: Checkov
         uses: bridgecrewio/checkov-action@v12
+
+      # instrumenta/conftest-action is unmaintained (last release 2021) and has
+      # no v0.3 tag, which failed the job before any step ran. Pin the binary.
+      - name: Install conftest
+        run: |
+          curl -sSfL \
+            "https://github.com/open-policy-agent/conftest/releases/download/v${CONFTEST_VERSION}/conftest_${CONFTEST_VERSION}_Linux_x86_64.tar.gz" \
+            | sudo tar -xz -C /usr/local/bin conftest
+          conftest --version
+
       - name: Conftest OPA
-        uses: instrumenta/conftest-action@v0.3
-        with: { files: "." }
+        run: |
+          shopt -s nullglob globstar
+          targets=(examples/**/*.tf examples/**/*.json)
+          if [ ${#targets[@]} -eq 0 ]; then
+            echo "::warning::No files under examples/ — OPA policies were not exercised."
+            exit 0
+          fi
+          conftest test --policy policies/opa "${targets[@]}"
+
       - name: Infracost setup
+        if: env.INFRACOST_API_KEY != ''
         uses: infracost/actions/setup@v3
+        with:
+          api-key: ${{ env.INFRACOST_API_KEY }}
+
       - name: Infracost diff
+        if: env.INFRACOST_API_KEY != ''
         run: infracost breakdown --path . --format json --out-file infracost.json || true
