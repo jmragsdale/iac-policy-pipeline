@@ -3,6 +3,37 @@
 Auto-generated journal of project changes.
 Generated: 2026-01-05 19:39
 
+## 2026-08-27 18:48
+
+**Commit:** `8cc883e`
+
+feat(policy): make the gate real — HCL-aware rules, paired fixtures, both-direction CI
+
+The pipeline was green while evaluating zero files: examples/ held four
+empty directories, so the OPA step had no input, and the single rule was
+written against a hand-shaped {resource_type, public, name} document that
+nothing in the repo ever produced. It also used v0 rego syntax, which the
+OPA 1.x bundled with current conftest refuses to compile.
+
+- Rewrite the S3 rules and add Azure Storage rules in rego v1, reading the
+  HCL shape conftest actually emits (input.resource[type][name][i]).
+- Add paired compliant/non-compliant fixtures under examples/.
+- Add 7 policy unit tests, run by 'conftest verify'.
+- CI now asserts both directions: the bad fixtures must be rejected and the
+  good ones must pass, so the gate cannot pass by evaluating nothing.
+- tfsec and Checkov scan examples/ with soft_fail, since half the fixtures
+  are insecure on purpose; the OPA gate decides pass/fail.
+- README: replace the Quick Start and policy sample, which described a
+  terraform-plan workflow and a package name this repo does not use, and
+  split the violation list into what is enforced today versus planned.
+
+Verified locally against conftest 0.69.0, the version CI pins.
+
+**Files:** .github/workflows/security.yml,README.md,examples/aws/public-s3/main.tf,examples/aws/secure-s3/main.tf,examples/azure/public-blob/main.tf,examples/azure/secure-blob/main.tf,policies/opa/no-public-blob.rego,policies/opa/no-public-s3.rego,policies/opa/policies_test.rego
+
+---
+
+
 ## 2026-08-27 18:33
 
 **Commit:** `0badc86`
