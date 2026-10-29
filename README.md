@@ -1,4 +1,52 @@
-# Infrastructure Policy Pipeline with Open Policy Agent
+<a id="infrastructure-policy-pipeline-with-open-policy-agent"></a>
+<a href="policies/opa/policies_test.rego">
+<picture>
+  <source media="(max-width: 600px)" srcset="docs/assets/readme/header-mobile.png">
+  <img src="docs/assets/readme/header.png" width="1440" alt="IaC Policy Pipeline. OPA and Conftest policies for Terraform storage exposure, with paired AWS/Azure fixtures, policy tests and a GitHub Actions workflow.">
+</picture>
+</a>
+
+<p>
+  <a href="policies/opa/policies_test.rego"><strong>Start here ↗</strong></a> &nbsp; / &nbsp;
+  <a href="policies/opa/no-public-s3.rego">Source</a> &nbsp; / &nbsp;
+  <a href="#project-guide">Project guide</a> &nbsp; / &nbsp;
+  <a href="https://github.com/jmragsdale">Profile</a>
+</p>
+
+OPA and Conftest policies for Terraform storage exposure, with paired AWS/Azure fixtures, policy tests and a GitHub Actions workflow.
+
+## Explore the project
+
+Open a card for the implementation, examples or supporting documentation.
+
+<p>
+<a href="policies/opa/no-public-s3.rego">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/readme/rules-dark.png">
+  <img src="docs/assets/readme/rules-light.png" width="360" alt="Read the storage rules. Inspect the Rego checks for public S3 and Azure blob access.">
+</picture>
+</a>
+<a href="policies/opa/policies_test.rego">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/readme/tests-dark.png">
+  <img src="docs/assets/readme/tests-light.png" width="360" alt="Inspect policy tests. Review expected policy decisions and the rule test cases.">
+</picture>
+</a>
+<a href="examples/aws/secure-s3/main.tf">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/readme/fixtures-dark.png">
+  <img src="docs/assets/readme/fixtures-light.png" width="360" alt="Explore paired fixtures. Inspect compliant and deliberately non-compliant Terraform examples.">
+</picture>
+</a>
+<a href=".github/workflows/security.yml">
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/readme/ci-dark.png">
+  <img src="docs/assets/readme/ci-light.png" width="360" alt="Review the CI gate. Read policy checks and the other configured workflow stages.">
+</picture>
+</a>
+</p>
+
+## Project guide
 
 Policy-as-Code enforcement pipeline that validates Infrastructure as Code for security compliance before deployment, preventing misconfigurations and security violations.
 
@@ -7,6 +55,9 @@ Policy-as-Code enforcement pipeline that validates Infrastructure as Code for se
 This project demonstrates automated policy enforcement using Open Policy Agent (OPA) to validate Terraform configurations against security and compliance policies. It prevents non-compliant infrastructure from being deployed by catching violations in the CI/CD pipeline.
 
 ## 🏗️ Architecture
+
+<details>
+<summary>Architecture flow (text)</summary>
 
 ```
 ┌─────────────┐     ┌──────────────┐     ┌─────────────┐
@@ -27,6 +78,8 @@ This project demonstrates automated policy enforcement using Open Policy Agent (
                             │  Deploy      │      │  Block       │
                             └──────────────┘      └──────────────┘
 ```
+
+</details>
 
 ## ✨ Features
 
@@ -123,3 +176,10 @@ are no rules for them in `policies/opa` yet.
 ---
 
 ⭐ **Star this repo** if you're implementing policy-as-code!
+
+<details>
+<summary>README visual assets</summary>
+
+[Artwork sources and regeneration notes](docs/assets/readme/README.md).
+
+</details>

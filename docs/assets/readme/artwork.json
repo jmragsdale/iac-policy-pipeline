@@ -1,0 +1,76 @@
+{
+  "title": "IaC Policy Pipeline",
+  "mobileTitle": [
+    "IaC policy",
+    "pipeline"
+  ],
+  "eyebrow": "POLICY AS CODE",
+  "tagline": "Infrastructure rules in the delivery path.",
+  "mobileTagline": [
+    "Infrastructure rules",
+    "in the delivery path."
+  ],
+  "description": [
+    "OPA and Conftest checks for Terraform configuration.",
+    "Paired fixtures and CI workflow definitions."
+  ],
+  "mobileDescription": [
+    "OPA and Conftest checks for Terraform.",
+    "Paired fixtures and CI workflow definitions."
+  ],
+  "footerLeft": "OPA / REGO",
+  "footerMiddle": "CONFTEST / TERRAFORM",
+  "footerRight": "RULES / FIXTURES / CI",
+  "diagram": [
+    "CODE",
+    "POLICY",
+    "VERDICT"
+  ],
+  "summary": "OPA and Conftest policies for Terraform storage exposure, with paired AWS/Azure fixtures, policy tests and a GitHub Actions workflow.",
+  "cards": [
+    {
+      "slug": "rules",
+      "category": "POLICY DEFINITIONS",
+      "title": "Read the storage rules",
+      "lines": [
+        "Inspect the Rego checks for",
+        "public S3 and Azure blob access."
+      ],
+      "footer": "OPA / REGO RULES",
+      "href": "policies/opa/no-public-s3.rego"
+    },
+    {
+      "slug": "tests",
+      "category": "REGRESSION EVIDENCE",
+      "title": "Inspect policy tests",
+      "lines": [
+        "Review expected policy decisions",
+        "and the rule test cases."
+      ],
+      "footer": "CONFTEST / UNIT TESTS",
+      "href": "policies/opa/policies_test.rego"
+    },
+    {
+      "slug": "fixtures",
+      "category": "EXAMPLE INPUTS",
+      "title": "Explore paired fixtures",
+      "lines": [
+        "Inspect compliant and deliberately",
+        "non-compliant Terraform examples."
+      ],
+      "footer": "AWS + AZURE / FIXTURES",
+      "href": "examples/aws/secure-s3/main.tf"
+    },
+    {
+      "slug": "ci",
+      "category": "DELIVERY WORKFLOW",
+      "title": "Review the CI gate",
+      "lines": [
+        "Read policy checks and the other",
+        "configured workflow stages."
+      ],
+      "footer": "GITHUB ACTIONS / WORKFLOW",
+      "href": ".github/workflows/security.yml"
+    }
+  ]
+}
