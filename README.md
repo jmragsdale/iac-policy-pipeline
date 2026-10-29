@@ -1,4 +1,5 @@
 <a id="infrastructure-policy-pipeline-with-open-policy-agent"></a>
+
 <a href="policies/opa/policies_test.rego">
 <picture>
   <source media="(max-width: 600px)" srcset="docs/assets/readme/header-mobile.png">
